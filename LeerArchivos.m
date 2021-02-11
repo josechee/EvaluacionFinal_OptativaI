@@ -1,10 +1,15 @@
-clear all;
+function imagen = LeerArchivos(archivo)
 
-#VERIFICAR QUE LA LECTURA SEA AUTOMATIZADA I.E. CONCATENANDO EL DIRECTORIO Y EL ARCHIVO
-directorio = ('C:/Users/Public/finalPseniales/');
-nombreArchivo = 2
-extensionArchivo = '.jpg'
-imagen = imread('2.jpg');
+  directorio = ('C:\Users\Public\finalPseniales\imgenes\');  
+  archivoAleer = strcat(directorio,char(archivo));
+  imagen = imread(archivoAleer);
+  #imshow(imagen);
+  
+endfunction
+
+
+
+  
 
 %{ 
 #SE COMENTO PARA PODER COMPROBAR QUE SE AUTOMATICE LA LECTURA DE LAS IMAGENES DE ARRIBA
