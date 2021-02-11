@@ -1,4 +1,4 @@
-function archivos = ObtenerArchivos(n)
+function archivos = ObtenerArchivos()
   directorio = readdir('C:\Users\Public\finalPseniales\imgenes\');  
   obtenerArchivos = {};
   j=1;
