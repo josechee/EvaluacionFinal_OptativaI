@@ -1,11 +1,11 @@
 clear all;
 
 #este script es para ir probando partes por partes de las funciones o del proyecto
-clear all;
+#clear all;
 #TEST=load('Coffee_TEST');
 #TRAIN=load('Coffee_TRAIN');
-torso_TEST=load('CinC_ECG_torso_TEST');
-torso_TRAIN=load('CinC_ECG_torso_TRAIN');
+#torso_TEST=load('CinC_ECG_torso_TEST');
+#torso_TRAIN=load('CinC_ECG_torso_TRAIN');
 # programacion Evolutiva
 
 #senial= obtenerSenial(TEST);
@@ -49,8 +49,8 @@ individuo5=[1,2,3,4,5,6,7,8,6];
 #POP = [POP;[1,2,3,4];];
 #POP = [POP;individuo2];
 
-mediana = median(individuo5);
-desvEstandar =std(individuo5);
+#mediana = median(individuo5);
+#desvEstandar =std(individuo5);
 #POP(1;:) = indAux
 #POP(1,:)=individuo4;
 #POP(2,:)=individuo5;
@@ -81,4 +81,17 @@ desvEstandar =std(individuo5);
   
 #AUX= [AUX;auxArray];  
 
+TRAIN=load('BD_TRAIN');
+erroPromedio=ValidacionCruzadaDejandoUnoFuera(TRAIN);
+#validacionCruzada=TRAIN;
+#validacionCruzada(2,:)=[];
 
+%{
+i=5;
+j=4;
+
+if i != j
+  disp('son diferentes');
+endif
+
+%}
