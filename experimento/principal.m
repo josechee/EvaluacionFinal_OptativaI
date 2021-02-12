@@ -8,11 +8,11 @@ TRAIN=load('BD_TRAIN');
 senial_F1= BD_SIN_CLASES(1,:); #obtener la primera senial o la primera fila de la BD sin la clase
 
 w1_min = 2;
-w1_max = 2;%length(senial_F1-10); 
+w1_max = length(senial_F1-10); 
 
 w2= ventanas(senial_F1);## obtener el porcentaje de ventanas que se mandara de la la primera senia (fila 1)
-w2_min = 2 % round(w2(1)) # aplicar el redondeo hacia arriba si es >=.5
-w2_max = 2%round(w2(2)) # aplicar el redondeo hacia abajo si es <.5
+w2_min = round(w2(1)) # aplicar el redondeo hacia arriba si es >=.5
+w2_max = round(w2(2)) # aplicar el redondeo hacia abajo si es <.5
 
 k_min = 1;
 k_max = 1;%%%aqui era 100 
@@ -26,7 +26,7 @@ Lim_min = [w1_min,w2_min,k_min];  # limite inferior % se va tener un vector de d
 
 #Lim_max = [261,212,19];   # limite superior % se va tener un vector de diferente limite pejp = [LongitudSenial,LongitudSenial,100] 
 #Lim_min = [146,170,5];
-P = 1;       # tamanio de la poblacion
+P = 2;       # tamanio de la poblacion
 G = 2;        # numero de generaciones
 PM = 0.9;     # probabilidad de mutacion
 
