@@ -2,7 +2,7 @@ function [ventana] = ventanas(senial)
   
   ventana=[];
   longSenial=length(senial);
-  ventana =(longSenial*20)/100;%tamanio de ventana o limite inferior
-  ventana =[ventana,(longSenial*90)/100];%tamanio de ventana o limite superior
+  ventana =(longSenial*5)/100;%tamanio de ventana o limite inferior #20%
+  ventana =[ventana,(longSenial*50)/100];%tamanio de ventana o limite superior#90%
 
 endfunction

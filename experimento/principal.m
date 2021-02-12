@@ -8,11 +8,11 @@ TRAIN=load('BD_TRAIN');
 senial_F1= BD_SIN_CLASES(1,:); #obtener la primera senial o la primera fila de la BD sin la clase
 
 w1_min = 2;
-w1_max = length(senial_F1-10); 
+w1_max = length(senial_F1-1000); 
 
 w2= ventanas(senial_F1);## obtener el porcentaje de ventanas que se mandara de la la primera senia (fila 1)
-w2_min = round(w2(1)) # aplicar el redondeo hacia arriba si es >=.5
-w2_max = round(w2(2)) # aplicar el redondeo hacia abajo si es <.5
+w2_min = 1;%round(w2(1)) # aplicar el redondeo hacia arriba si es >=.5
+w2_max = 1;%round(w2(2)) # aplicar el redondeo hacia abajo si es <.5
 
 k_min = 1;
 k_max = 1;%%%aqui era 100 
@@ -44,11 +44,11 @@ evaluaciones = fCalcularAptitud(poblacion,P,TRAIN);
 
 
 #------------------------Inicia las iteraciones-----------------------------
-%{
+
 for i=1:1##Aqui es G
   #Operador de mutacion  
   hijos = fOperadorMutacion(poblacion,Lim_min,Lim_max,P,D,PM);
-  eval_hijos = fCalcularAptitud_HIJOS(hijos,P,TEST,TRAIN);##era solo fCalcularAptitud
+  eval_hijos = fCalcularAptitud_HIJOS(hijos,P,TRAIN);##era solo fCalcularAptitud
   
   #Torneos estocasticos
   #juntar las poblaciones tanto de los padres como de los hijos
@@ -72,4 +72,3 @@ peor = max(evaluacionTotal);
 mediana = median(evaluacionTotal);
 media = mean(evaluacionTotal);
 desvStandar= std(evaluacionTotal);
-%}

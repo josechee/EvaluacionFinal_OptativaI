@@ -1,4 +1,4 @@
-function RES =  fCalcularAptitud_HIJOS(poblacion,P,TEST,TRAIN)  
+function RES =  fCalcularAptitud_HIJOS(poblacion,P,TRAIN)  
     
   #Aqui se va aplicar la reduccion de ruido
   #Aqui se va aplicar la reduccion de dimensionalidad
@@ -29,14 +29,14 @@ function RES =  fCalcularAptitud_HIJOS(poblacion,P,TEST,TRAIN)
     endfor
     TRAIN_PROCESADO(j,:)=arrayAux;
      
- endfor
+   endfor
     #Aqui se va llamar la funcion para juntar las clases con loa datos
     TRAIN_PROCESADO_CON_CLASES=juntar_Clases_Datos(CLASES,TRAIN_PROCESADO);
     
    
    #Aca se aplicara el a  lgoritmo de KNN 
-   err=KNN(TRAIN,TRAIN_PROCESADO_CON_CLASES,individuo(1,3));
- 
+   #err=KNN(TRAIN,TRAIN_PROCESADO_CON_CLASES,individuo(1,3));
+   err=ValidacionCruzadaDejandoUnoFuera(TRAIN_PROCESADO_CON_CLASES);
    RES=[RES,err];
   endfor
   

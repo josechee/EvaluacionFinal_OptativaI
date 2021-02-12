@@ -9,3 +9,4 @@
 ### Información General
 Este repositorio contiene todos los scripts que se utilizaron para implementar un metaclasificador de señales (evaluación) para este caso
  en particular las señales se generaron a partir de los contornos de hojas.
+### Metodología
