@@ -1,4 +1,4 @@
-function RES =  fCalcularAptitud(poblacion,P,TEST,TRAIN)  
+function RES =  fCalcularAptitud(poblacion,P,TRAIN)  
     
   #Aqui se va aplicar la reduccion de ruido
   #Aqui se va aplicar la reduccion de dimensionalidad
@@ -35,7 +35,7 @@ function RES =  fCalcularAptitud(poblacion,P,TEST,TRAIN)
     TRAIN_PROCESADO_CON_CLASES=juntar_Clases_Datos(CLASES,TRAIN_PROCESADO);
     
    #TRAIN_PROCESADO(1)=[CLASES,TRAIN_PROCESADO];
-   #Aca se aplicara el a  lgoritmo de KNN 
+   #Aca se aplicara el a  lgoritmo de validacion cruzada pero en ella se va utilizar KNN pero solo con un vecino
    err=KNN(TRAIN,TRAIN_PROCESADO_CON_CLASES,individuo(1,3));
    
    RES=[RES,err];

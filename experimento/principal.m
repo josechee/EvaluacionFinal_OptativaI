@@ -1,8 +1,5 @@
 clear all;
-#TRAIN=load('CinC_ECG_torso_TRAIN');# opcupar primero esta base de datos
-#TRAIN=load('Coffee_TRAIN');
-TRAIN=load('Coffee_TEST');
-TEST=load('CinC_ECG_torso_TEST');
+TRAIN=load('BD_TRAIN');
 
 # programacion Evolutiva
 
@@ -18,7 +15,8 @@ w2_min = round(w2(1)) # aplicar el redondeo hacia arriba si es >=.5
 w2_max = round(w2(2)) # aplicar el redondeo hacia abajo si es <.5
 
 k_min = 1;
-k_max = 20;%%%aqui era 100 
+k_max = 1;%%%aqui era 100 
+##considerar aqui solo un vecino en la validacion cruzada 
 
 #obtener esos valores para ser utilizados los difenretes algorirmo que indica en el requerimiento 
 
@@ -26,23 +24,28 @@ D = 3;          # dimension del vector %aqui seria D = 3  %%para el valor de k s
 Lim_max = [w1_max,w2_max,k_max];   # limite superior % se va tener un vector de diferente limite pejp = [LongitudSenial,LongitudSenial,100] 
 Lim_min = [w1_min,w2_min,k_min];  # limite inferior % se va tener un vector de diferente limite pejp = [2,20,1]
 
-Lim_max = [261,212,19];   # limite superior % se va tener un vector de diferente limite pejp = [LongitudSenial,LongitudSenial,100] 
-Lim_min = [146,170,5];
-P = 10;       # tamanio de la poblacion
+#Lim_max = [261,212,19];   # limite superior % se va tener un vector de diferente limite pejp = [LongitudSenial,LongitudSenial,100] 
+#Lim_min = [146,170,5];
+P = 1;       # tamanio de la poblacion
 G = 2;        # numero de generaciones
-PM = 0.8;     # probabilidad de mutacion
+PM = 0.9;     # probabilidad de mutacion
+
+#####################
+#CHECAR ESTA PARTE CON RESPECTO A LA VALIDACION CRUZADA 
+#PROBAR POR PARTES COMO AHORA QUE CON POBLACION 1 PARA REDUCIR EL TIEMPO DE EJECUCION
+#########################
 
 #generar la poblacion inicial
 poblacion = zeros(P,D);
 poblacion = fGenerarPop(poblacion,Lim_min,Lim_max,D,P);
 
 #######evaluar las soluciones#######
-evaluaciones = fCalcularAptitud(poblacion,P,TEST,TRAIN);
+evaluaciones = fCalcularAptitud(poblacion,P,TRAIN);
 
 
 #------------------------Inicia las iteraciones-----------------------------
-
-for i=1:G##Aqui es G
+%{
+for i=1:1##Aqui es G
   #Operador de mutacion  
   hijos = fOperadorMutacion(poblacion,Lim_min,Lim_max,P,D,PM);
   eval_hijos = fCalcularAptitud_HIJOS(hijos,P,TEST,TRAIN);##era solo fCalcularAptitud
@@ -69,3 +72,4 @@ peor = max(evaluacionTotal);
 mediana = median(evaluacionTotal);
 media = mean(evaluacionTotal);
 desvStandar= std(evaluacionTotal);
+%}
