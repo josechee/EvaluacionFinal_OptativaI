@@ -1,26 +1,22 @@
-function mensaje = ConjuntoSeniales()
-  
-  [longitudSenialMedio,longitudSenialCompleto]=PromedioLongitudSeniales();
+###Formando el conjunto de datos de entrenamiento##
+  %[longitudSenialMedio,longitudSenialCompleto]=PromedioLongitudSeniales();
   %{Valor que va ser la longitud para todas las seniales de cada imagen
-  #longitudSenialMedio=2521.9
-  #ongitudSenialCompleto=5043.9
+  %longitudSenialMedio=2521.9-> 2522 = columnas
+  %ongitudSenialCompleto=5043.9-> =columnas
   %}
   
-  #for i=1:100
-    #[senialMedioContorno,senialContornoCompleto]= ObtenerSenial(i);
-     
-  #endfor
+  columnasTRAIN=2522;
+  totalSeniales=100;  
+  conjuntoDatosTRAIN = zeros(totalSeniales,columnasTRAIN);  
   
+  for i=1:totalSeniales
+    [senialMedio,senialCompleto]=ObtenerSenial(i);  
+    senialTRAIN=ObtenerSenialLongitudFinal(senialMedio);
+    conjuntoDatosTRAIN(i,:)=senialTRAIN;
+  endfor
+   
+  senialesTRAIN=JuntarClasesDatos(conjuntoDatosTRAIN);
+  save -ascii BD_TRAIN senialesTRAIN
   
-endfunction
 
 
-#[senialMedioContorno,senialContornoCompleto]= ObtenerSenial(1);
-
-
-
-function mensaje1 = hola()
-  
-  mensaje1='hello test';
-  return
-endfunction
