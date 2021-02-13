@@ -8,7 +8,7 @@ TRAIN=load('BD_TRAIN');
 senial_F1= BD_SIN_CLASES(1,:); #obtener la primera senial o la primera fila de la BD sin la clase
 
 w1_min = 2;
-w1_max = length(senial_F1-1000); 
+w1_max = length(senial_F1-2000); 
 
 w2= ventanas(senial_F1);## obtener el porcentaje de ventanas que se mandara de la la primera senia (fila 1)
 w2_min = 1;%round(w2(1)) # aplicar el redondeo hacia arriba si es >=.5
